@@ -25,10 +25,12 @@
          * Hold: momentarily activate the selected layer
          * Matches the original Vial LT1/LT2 usage.
          */
+
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
+
             flavor = "hold-preferred";
             tapping-term-ms = <250>;
             quick-tap-ms = <200>;
@@ -38,6 +40,7 @@
          * Rotary encoder mouse scrolling.
          * First parameter = clockwise, second = counter-clockwise.
          */
+
         rot_msc: sensor_rotate_mouse_scroll {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
@@ -51,25 +54,10 @@
         default_layer {
             display-name = "Base";
             bindings = <
-                /* Left top */
-                &kp TAB       &kp Q       &kp W       &kp E       &kp R       &kp T
-                /* Right top */
-                &kp Y         &kp U       &kp I       &kp O       &kp P       &kp BSPC
-
-                /* Left home */
-                &kp LCTRL     &kp A       &kp S       &kp D       &kp F       &kp G
-                /* Right home */
-                &kp H         &kp J       &kp K       &kp L       &kp BSLH    &kp ENTER
-
-                /* Left bottom + center */
-                &kp LSHIFT    &kp Z       &kp X       &kp C       &kp V       &kp B       &kp C_MUTE
-                /* Right center + bottom */
-                &kp LC(N0)    &kp N       &kp M       &kp COMMA   &kp DOT     &kp UP      &kp FSLH
-
-                /* Left lower/thumb */
-                &kp CAPSLOCK  &kp LGUI    &kp LALT    &lt NUM_MOUSE LANG2  &mkp MB1  &mkp MB2
-                /* Right thumb/lower */
-                &kp SPACE     &kp SPACE   &lt BLUETOOTH LANG1    &kp LEFT  &kp DOWN  &kp RIGHT
+&kp TAB       &kp Q     &kp W     &kp E                &kp R     &kp T                             &kp Y      &kp U      &kp I                &kp O     &kp P     &kp BSPC
+&kp LCTRL     &kp A     &kp S     &kp D                &kp F     &kp G                             &kp H      &kp J      &kp K                &kp L     &kp BSLH  &kp ENTER
+&kp LSHIFT    &kp Z     &kp X     &kp C                &kp V     &kp B     &kp C_MUTE  &kp LC(N0)  &kp N      &kp M      &kp COMMA            &kp DOT   &kp UP    &kp FSLH
+&kp CAPSLOCK  &kp LGUI  &kp LALT  &lt NUM_MOUSE LANG2  &mkp MB1  &mkp MB2                          &kp SPACE  &kp SPACE  &lt BLUETOOTH LANG1  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
 
             /*
@@ -77,6 +65,7 @@
              * Right encoder: CW Ctrl+KP- / CCW Ctrl+KP+
              * (preserves the order stored in the Vial file)
              */
+
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN
                 &inc_dec_kp LC(KP_MINUS) LC(KP_PLUS)
@@ -86,28 +75,14 @@
         number_mouse_layer {
             display-name = "NumberMouse";
             bindings = <
-                /* Left top */
-                &kp ESC       &kp N1      &kp N2      &kp N3      &kp N4      &kp N5
-                /* Right top */
-                &kp N6        &kp N7      &kp N8      &kp N9      &kp N0      &kp DEL
-
-                /* Left home */
-                &none         &mmv MOVE_UP  &kp LG(LS(S))  &none   &kp SEMI    &kp MINUS
-                /* Right home */
-                &kp EQUAL     &kp SQT     &none        &none        &none        &none
-
-                /* Left bottom + center */
-                &none         &mmv MOVE_DOWN  &none     &none        &none        &none        &kp C_MUTE
-                /* Right center + bottom */
-                &mkp MB3      &none        &none        &none        &none        &none        &none
-
-                /* Left lower/thumb */
-                &none         &none        &none        &none        &none        &none
-                /* Right thumb/lower */
-                &none         &none        &none        &none        &none        &none
+&kp ESC  &kp N1  &kp N2         &kp N3  &kp N4    &kp N5                           &kp N6     &kp N7   &kp N8  &kp N9  &kp N0  &kp DEL
+&none    &none   &kp LG(LS(S))  &none   &kp SEMI  &kp MINUS                        &kp EQUAL  &kp SQT  &none   &none   &none   &none
+&none    &none   &none          &none   &none     &none      &kp C_MUTE  &mkp MB3  &none      &none    &none   &none   &none   &none
+&none    &none   &none          &none   &none     &none                            &none      &none    &none   &none   &none   &none
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
+
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN
                 &rot_msc SCRL_DOWN SCRL_UP
@@ -117,28 +92,14 @@
         bluetooth_layer {
             display-name = "Bluetooth";
             bindings = <
-                /* Left top */
-                &none         &none        &none        &none        &none        &none
-                /* Right top */
-                &none         &none        &none        &none        &none        &none
-
-                /* Left home: BT2 is on the original Left Ctrl position */
-                &bt BT_SEL 2  &none        &none        &none        &none        &none
-                /* Right home */
-                &none         &none        &none        &none        &none        &none
-
-                /* Left bottom: BT1 on Left Shift + center mute */
-                &bt BT_SEL 1  &none        &none        &none        &none        &none        &kp C_MUTE
-                /* Right center + bottom */
-                &mkp MB3      &none        &none        &none        &none        &none        &none
-
-                /* Left lower: BT0 on Caps Lock position */
-                &bt BT_SEL 0  &none        &none        &none        &none        &none
-                /* Right thumb/lower */
-                &none         &none        &none        &none        &none        &none
+&none         &none         &none         &none  &none  &none                        &none  &none  &none  &none  &none  &none
+&bt BT_SEL 2  &none         &none         &none  &none  &none                        &none  &none  &none  &none  &none  &none
+&bt BT_SEL 1  &none         &none         &none  &none  &none  &kp C_MUTE  &mkp MB3  &none  &none  &none  &none  &none  &none
+&bt BT_SEL 0  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none                        &none  &none  &none  &none  &none  &none
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
+
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN
                 &rot_msc SCRL_DOWN SCRL_UP
