@@ -92,10 +92,10 @@
         bluetooth_layer {
             display-name = "Bluetooth";
             bindings = <
-&none         &none         &none         &none  &none  &none                         &none  &none  &none  &none  &none  &none
-&bt BT_SEL 2  &none         &none         &none  &none  &none                         &none  &none  &none  &none  &none  &none
-&bt BT_SEL 1  &none         &none         &none  &none  &none  &kp C_MUTE  &soft_off  &none  &none  &none  &none  &none  &none
-&bt BT_SEL 0  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none                         &none  &none  &none  &none  &none  &none
+&none         &none         &none         &none  &none  &none                               &none  &none  &none  &none  &none  &kp F12
+&bt BT_SEL 2  &none         &none         &none  &none  &none                               &none  &none  &none  &none  &none  &none
+&bt BT_SEL 1  &none         &none         &none  &none  &none  &kp C_MUTE  &kp LA(LC(F12))  &none  &none  &none  &none  &none  &none
+&bt BT_SEL 0  &bt BT_SEL 3  &bt BT_SEL 4  &none  &none  &none                               &none  &none  &none  &none  &none  &none
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
