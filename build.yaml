@@ -14,7 +14,6 @@
 ---
 include:
   - board: cornix_left
-    snippet: studio-rpc-usb-uart
     artifact-name: cornix_left_default_nosd
 
   - board: cornix_right
