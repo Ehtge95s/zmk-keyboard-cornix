@@ -111,7 +111,7 @@
 &kp ESC       &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LSHIFT  &kp UP     &kp TAB                                &kp UNDER      &kp SLASH     &kp MINUS      &kp N7  &kp N8  &kp N9
 &bt BT_SEL 2  &kp LC(A)         &kp LC(S)     &kp LEFT    &kp DOWN   &kp RIGHT                              &kp COMMA      &kp ASTERISK  &kp PLUS       &kp N4  &kp N5  &kp N6
 &bt BT_SEL 1  &kp LC(Z)         &kp LC(X)     &kp LC(C)   &kp LC(V)  &kp LC(Y)  &to 0  &kp C_AL_CALCULATOR  &kp BACKSLASH  &kp PERCENT   &kp EQUAL      &kp N1  &kp N2  &kp N3
-&bt BT_SEL 0  &bt BT_SEL 3      &bt BT_SEL 4  &mo 1       &mkp MB1   &mkp MB2                               &kp SPACE      &kp ENTER     &kp BACKSPACE  &kp N0  &mc_00  &kp DOT
+&bt BT_SEL 0  &bt BT_SEL 3      &bt BT_SEL 4  &kp SPACE   &mkp MB1   &mkp MB2                               &kp ENTER      &kp DELETE    &kp BACKSPACE  &kp N0  &mc_00  &kp DOT
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
