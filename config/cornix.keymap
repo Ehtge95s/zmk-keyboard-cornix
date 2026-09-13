@@ -48,16 +48,32 @@
         };
     };
 
+    macros {
+        mc_00: mc_00 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp KP_NUMBER_0 &kp KP_NUMBER_0>;
+            label = "MC_00";
+        };
+
+        mc_NumMode: mc_NumMode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 2 &kp LANG2>;
+            label = "MC_NUMMODE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "Base";
             bindings = <
-&kp TAB     &kp Q     &kp W     &kp E                &kp R     &kp T                             &kp Y      &kp U      &kp I                &kp O     &kp P     &kp BSPC
-&kp LCTRL   &kp A     &kp S     &kp D                &kp F     &kp G                             &kp H      &kp J      &kp K                &kp L     &kp BSLH  &kp ENTER
-&kp LSHIFT  &kp Z     &kp X     &kp C                &kp V     &kp B     &kp C_MUTE  &kp LC(N0)  &kp N      &kp M      &kp COMMA            &kp DOT   &kp UP    &kp FSLH
-&kp RCTRL   &kp LGUI  &kp LALT  &lt NUM_MOUSE LANG2  &mkp MB1  &mkp MB2                          &kp SPACE  &kp SPACE  &lt BLUETOOTH LANG1  &kp LEFT  &kp DOWN  &kp RIGHT
+&kp TAB     &kp Q     &kp W     &kp E                &kp R     &kp T                              &kp Y      &kp U      &kp I                &kp O     &kp P     &kp BSPC
+&kp LCTRL   &kp A     &kp S     &kp D                &kp F     &kp G                              &kp H      &kp J      &kp K                &kp L     &kp BSLH  &kp ENTER
+&kp LSHIFT  &kp Z     &kp X     &kp C                &kp V     &kp B     &kp C_MUTE  &mc_NumMode  &kp N      &kp M      &kp COMMA            &kp DOT   &kp UP    &kp FSLH
+&kp RCTRL   &kp LGUI  &kp LALT  &lt NUM_MOUSE LANG2  &mkp MB1  &mkp MB2                           &kp SPACE  &kp SPACE  &lt BLUETOOTH LANG1  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
 
             /*
@@ -75,10 +91,10 @@
         number_mouse_layer {
             display-name = "NumberMouse";
             bindings = <
-&kp ESC       &kp N1  &kp N2         &kp N3  &kp N4    &kp N5                           &kp N6     &kp N7   &kp N8  &kp N9  &kp N0  &kp DEL
-&none         &none   &kp LG(LS(S))  &none   &kp SEMI  &kp MINUS                        &kp EQUAL  &kp SQT  &none   &none   &none   &none
-&none         &none   &none          &none   &none     &none      &kp C_MUTE  &mkp MB3  &none      &none    &none   &none   &none   &none
-&kp CAPSLOCK  &none   &none          &none   &none     &none                            &none      &none    &none   &none   &none   &none
+&kp ESC           &kp N1  &kp N2         &kp N3  &kp N4      &kp N5                                &kp N6     &kp N7   &kp N8  &kp N9  &kp N0  &kp DEL
+&kp LEFT_CONTROL  &none   &kp LG(LS(S))  &none   &kp SEMI    &kp MINUS                             &kp EQUAL  &kp SQT  &none   &none   &none   &none
+&kp LSHIFT        &none   &none          &none   &none       &none           &kp C_MUTE  &mkp MB3  &none      &none    &none   &none   &none   &none
+&kp CAPSLOCK      &none   &none          &none   &bt BT_CLR  &bt BT_CLR_ALL                        &none      &none    &none   &none   &none   &none
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
@@ -92,10 +108,10 @@
         bluetooth_layer {
             display-name = "Bluetooth";
             bindings = <
-&bt BT_CLR    &bt BT_CLR_ALL  &none         &none  &none  &none                               &none  &none  &none  &none  &none  &kp F12
-&bt BT_SEL 2  &none           &none         &none  &none  &none                               &none  &none  &none  &none  &none  &none
-&bt BT_SEL 1  &none           &none         &none  &none  &none  &kp C_MUTE  &kp LA(LC(F12))  &none  &none  &none  &none  &none  &none
-&bt BT_SEL 0  &bt BT_SEL 3    &bt BT_SEL 4  &none  &none  &none                               &none  &none  &none  &none  &none  &none
+&kp ESC       &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LSHIFT  &kp UP     &kp TAB                       &kp UNDER     &kp KP_DIVIDE    &kp KP_MINUS   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
+&bt BT_SEL 2  &kp LC(A)         &kp LC(S)     &kp LEFT    &kp DOWN   &kp RIGHT                     &kp KP_COMMA  &kp KP_MULTIPLY  &kp KP_PLUS    &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6
+&bt BT_SEL 1  &kp LC(Z)         &kp LC(X)     &kp LC(C)   &kp LC(V)  &kp LC(Y)  &to 0  &kp K_CALC  &kp INT_YEN   &kp PERCENT      &kp KP_EQUAL   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3
+&bt BT_SEL 0  &bt BT_SEL 3      &bt BT_SEL 4  &mo 1       &mkp MB1   &mkp MB2                      &kp SPACE     &kp ENTER        &kp BACKSPACE  &kp KP_NUMBER_0  &mc_00           &kp DOT
             >;
 
             /* Left: volume. Right: mouse wheel down/up. */
